@@ -37,6 +37,17 @@ public class FileContext
 
     private void LoadData()
     {
+        if (dataContainer != null) return;
+    
+        if (!File.Exists(filePath))
+        {
+            dataContainer = new ()
+            {
+                Posts = new List<Post>(),
+                Users = new List<User>()
+            };
+            return;
+        }
         string content = File.ReadAllText(filePath);
         dataContainer = JsonSerializer.Deserialize<DataContainer>(content);
     }
