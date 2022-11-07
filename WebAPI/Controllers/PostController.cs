@@ -31,4 +31,11 @@ public class PostController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
+
+    [HttpGet]
+    public async Task<ActionResult<Post>> GetAllPostsAsync()
+    {
+        List<Post> list = await postLogic.GetAllPostsAsync();
+        return Ok(list);
+    }
 }

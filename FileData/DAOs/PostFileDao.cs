@@ -28,4 +28,12 @@ public class PostFileDao : IPostDao
 
         return Task.FromResult(post);
     }
+
+    public Task<List<Post>> GetAllPostsAsync()
+    {
+        List<Post> list = context.Posts.ToList();
+
+        return Task.FromResult(list);
+
+    }
 }

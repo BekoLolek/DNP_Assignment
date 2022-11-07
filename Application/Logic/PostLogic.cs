@@ -35,4 +35,10 @@ public class PostLogic : IPostLogic
         if (string.IsNullOrEmpty(dto.Title)) throw new Exception("Title cannot be empty.");
         // other validation stuff
     }
+
+    public async Task<List<Post>> GetAllPostsAsync()
+    {
+        List<Post>? list = await postDao.GetAllPostsAsync();
+        return list;
+    }
 }
