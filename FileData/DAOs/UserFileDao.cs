@@ -44,6 +44,32 @@ public class UserFileDao : IUserDao
         );
         return Task.FromResult(existing);
     }
+    
+    public Task<User> Register(User user)
+    {
+        ValidateUserRegister(user);
+        CreateAsync(user);
+        return Task.FromResult(user);
+    }
+
+    private void ValidateUserRegister(User user)
+    {
+        
+        if (context.Users.Contains(user))
+        {
+            throw new Exception("User already exists!");
+        }
+    }
+    
+    public Task<User> Login(User user)
+    {
+        throw new NotImplementedException();
+    }
+    
+    public Task<User> LogOut(User user)
+    {
+        throw new NotImplementedException();
+    }
 
     
 }

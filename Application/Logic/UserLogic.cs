@@ -43,5 +43,21 @@ public class UserLogic : IUserLogic
             throw new Exception("Username must be less than 16 characters!");
     }
 
-    
+    public async Task<User> Register(User user)
+    {
+        User registered = await userDao.Register(user);
+        return registered;
+    }
+
+    public async Task<User> Login(User user)
+    {
+        User loggedIn = await userDao.Login(user);
+        return loggedIn;
+    }
+
+    public async Task<User> LogOut(User user)
+    {
+        User loggedOut = await userDao.LogOut(user);
+        return loggedOut;
+    }
 }
